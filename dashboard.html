@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Finance - Modern Financial Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="icon" type="image/x-icon" href="assests/images/logoIcon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+   
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">
+        <i class="ri-menu-line"></i>
+    </button>
+
+    <div class="finance-container">
+        <div class="sidebar" id="sidebar">
+            <div>
+                <div class="logo">
+                    <span class="initials">TB</span>
+                    <span class="brand-name">Finance</span>
+                </div>
+
+                <div class="nav-items">
+                    <a href="#" class="nav-item active">
+                        <i class="ri-home-3-line"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="ri-dashboard-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="ri-wallet-2-line"></i>
+                        <span>Wallet</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="ri-arrow-left-right-fill"></i>
+                        <span>Transaction</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="ri-user-line"></i>
+                        <span>Profile</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bottom-nav">
+                <div class="theme-toggle" id="themeToggle">
+                    <span>
+                        <i class="ri-moon-line"></i>
+                        Dark Mode
+                    </span>
+                    <div class="toggle-switch"></div>
+                </div>
+                
+                <a href="#" class="nav-item">
+                    <i class="ri-settings-3-line"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="ri-logout-box-r-line"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </div>
+
+        <section class="right-content">
+            <div class="upper-navigation">
+                <nav class="top-nav">
+                    <h1>Dashboard</h1>
+                
+                    <div class="search-area">
+                        <i class="ri-search-line"></i>
+                        <input type="text" placeholder="Search here" />
+                    </div>
+                
+                    <div class="nav-actions">
+                        <div class="notification">
+                            <i class="ri-notification-3-line"></i>
+                            <span class="badge">8</span>
+                        </div>
+                        <div class="profile">
+                            <img src="assests/images/juiceWrld.jpg" alt="Profile" />
+                            <span class="username">Tijani Basit</span>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="finance-grid">
+                <div class="card balance">
+                    <div class="card-info">
+                        <h3>Total Balance</h3>
+                        <h2>$21,189.00</h2>
+                        <div class="card-subinfo">
+                            <span class="percent-up">+4.1%</span>
+                            <span class="month-text">This month</span>
+                        </div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="balanceLineChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card income">
+                    <div class="card-info">
+                        <h3>Total Income</h3>
+                        <h2>$12,450.00</h2>
+                        <div class="card-subinfo">
+                            <span class="percent-up">+2.7%</span>
+                            <span class="month-text">This month</span>
+                        </div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="incomeLineChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card expenses">
+                    <div class="card-info">
+                        <h3>Total Expenses</h3>
+                        <h2>$8,739.00</h2>
+                        <div class="card-subinfo">
+                            <span class="percent-down" style="color: var(--accent-danger);">-1.3%</span>
+                            <span class="month-text">This month</span>
+                        </div>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="expensesLineChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card all-expenses">
+                    <h3>All Expenses</h3>
+                    <div class="donut-container">
+                        <canvas id="expensesDoughnutChart"></canvas>
+                        <div class="donut-center">
+                            <h2>$6,000<span>.00</span></h2>
+                        </div>
+                    </div>
+                    <ul class="expenses-list">
+                        <li><span class="dot" style="background:#7e5bef;"></span> Shopping - $2000</li>
+                        <li><span class="dot" style="background:#00c49a;"></span> Home - $1800</li>
+                        <li><span class="dot" style="background:#ffbb33;"></span> Vacation - $1200</li>
+                        <li><span class="dot" style="background:#ff4d4f;"></span> Other - $1000</li>
+                    </ul>
+                </div>
+                
+                <div class="card total-balance">
+                    <h3>Total Balance History</h3>
+                    <div class="all-balance-chart">
+                        <canvas id="totalBalanceChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card income-statistics">
+                    <div class="income-header">
+                        <h3>Income Statistics</h3>
+                        <ul class="income-types">
+                            <li><span class="dot purple" style="background:#7e5bef;"></span> Replenishment</li>
+                            <li><span class="dot teal" style="background:#00c49a;"></span> Products</li>
+                            <li><span class="dot yellow" style="background:#ffbb33;"></span> Bills</li>
+                        </ul>
+                    </div>
+                    <div class="card-chart">
+                        <canvas id="incomeChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card planning">
+                    <div class="planning-header">
+                        <h3>Planning</h3>
+                        <button class="add-new">
+                            <i class="ri-add-line"></i> Add new
+                        </button>
+                    </div>
+                
+                    <div class="planning-item">
+                        <div class="item-info">
+                            <span>Visit to USA</span>
+                            <span>$3100/$4000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 77.5%;"></div>
+                        </div>
+                    </div>
+                
+                    <div class="planning-item">
+                        <div class="item-info">
+                            <span>Car</span>
+                            <span>$2000/$1000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                
+                    <div class="planning-item">
+                        <div class="item-info">
+                            <span>Computer</span>
+                            <span>$2100/$3200</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65.6%;"></div>
+                        </div>
+                    </div>
+                
+                    <div class="planning-item">
+                        <div class="item-info">
+                            <span>Phone for mom</span>
+                            <span>$1680/$1800</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 93.3%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

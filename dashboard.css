@@ -1,0 +1,467 @@
+
+    :root {
+        --bg-primary: #121212;
+        --bg-secondary: #1e1e1e;
+        --bg-tertiary: #252525;
+        --text-primary: #ffffff;
+        --text-secondary: #b3b3b3;
+        --accent-primary: #7e5bef;
+        --accent-secondary: #00c49a;
+        --accent-danger: #ff4d4f;
+        --accent-warning: #ffbb33;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        --transition: all 0.3s ease;
+    }
+    .light-mode {
+        --bg-primary: #f5f5f9;
+        --bg-secondary: #ffffff;
+        --bg-tertiary: #f8f9fa;
+        --text-primary: #1a1a1a;
+        --text-secondary: #6c757d;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        transition: var(--transition);
+    }
+    body {
+        font-family: 'Rubik', sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+    .finance-container {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+    }
+    /* Sidebar Styles */
+    .sidebar {
+        width: 280px;
+        background: var(--bg-secondary);
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: var(--card-shadow);
+        z-index: 100;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .initials {
+        padding: 0.5rem;
+        font-weight: 700;
+        color: white;
+        background: var(--accent-primary);
+        border-radius: 8px;
+        font-size: 1.2rem;
+    }
+    .brand-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-primary);
+    }
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+        text-decoration: none;
+        color: var(--text-secondary);
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        transition: var(--transition);
+    }
+    .nav-item:hover, .nav-item.active {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        color: white;
+    }
+    .nav-item i {
+        font-size: 1.2rem;
+    }
+    .theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 1rem;
+        margin-top: 1rem;
+        background: var(--bg-tertiary);
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .theme-toggle span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .toggle-switch {
+        position: relative;
+        width: 48px;
+        height: 24px;
+        background: var(--bg-tertiary);
+        border-radius: 12px;
+        padding: 2px;
+        transition: var(--transition);
+    }
+    .toggle-switch::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--accent-primary);
+        transition: var(--transition);
+        left: 2px;
+    }
+    .light-mode .toggle-switch::before {
+        transform: translateX(24px);
+    }
+    .bottom-nav {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    /* Mobile menu button */
+    .menu-toggle {
+        display: none;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1000;
+        background: var(--accent-primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    /* Main Content Styles */
+    .right-content {
+        flex: 1;
+        margin-left: 280px;
+        padding: 1.5rem;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--bg-secondary);
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 1.5rem;
+    }
+    .search-area {
+        position: relative;
+        flex: 1;
+        max-width: 400px;
+        margin: 0 2rem;
+    }
+    .search-area i {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+    }
+    .search-area input {
+        width: 100%;
+        padding: 0.8rem 1rem 0.8rem 2.5rem;
+        border-radius: 8px;
+        border: none;
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+    }
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .notification {
+        position: relative;
+        cursor: pointer;
+    }
+    .badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: var(--accent-danger);
+        color: white;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 50%;
+    }
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--accent-primary);
+    }
+    /* Grid Layout */
+    .finance-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        grid-template-areas:
+            'box1 box2 box3'
+            'box4 box5 box5'
+            'box6 box6 box7';
+    }
+    .card {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+    }
+    .balance { grid-area: box1; }
+    .income { grid-area: box2; }
+    .expenses { grid-area: box3; }
+    .all-expenses { grid-area: box4; }
+    .total-balance { grid-area: box5; }
+    .income-statistics { grid-area: box6; }
+    .planning { grid-area: box7; }
+    .card-info h3 {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    .card-info h2 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .card-subinfo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .percent-up {
+        color: var(--accent-secondary);
+        font-weight: 600;
+    }
+    .month-text {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+    .card-chart {
+        width: 100%;
+        height: 80px;
+        margin-top: 1rem;
+    }
+    /* All Expenses Card */
+    .all-expenses {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .donut-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 1rem 0;
+    }
+    .donut-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .donut-center h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .expenses-list {
+        width: 100%;
+        list-style: none;
+    }
+    .expenses-list li {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .expenses-list li:last-child {
+        border-bottom: none;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 0.8rem;
+    }
+    /* Total Balance Card */
+    .all-balance-chart {
+        width: 100%;
+        height: 250px;
+        margin-top: 1rem;
+    }
+    /* Income Statistics */
+    .income-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    .income-types {
+        display: flex;
+        gap: 1rem;
+    }
+    .income-types li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+    }
+    #incomeChart {
+        width: 100%;
+        height: 250px !;
+        margin-top: 1rem;
+    }
+    .card-chart{
+      width: 100%;
+      height: 250px !important;
+      margin-top: 1rem;
+    }
+    /* Planning Card */
+    .planning-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    .add-new {
+        background: none;
+        border: none;
+        color: var(--accent-primary);
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    .planning-item {
+        margin-bottom: 1.2rem;
+    }
+    .item-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+    }
+    .progress-bar {
+        background: var(--bg-tertiary);
+        width: 100%;
+        height: 8px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .progress {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 8px;
+    }
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .finance-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+                'box1 box2'
+                'box3 box4'
+                'box5 box5'
+                'box6 box6'
+                'box7 box7';
+        }
+        
+        .sidebar {
+            width: 230px;
+        }
+        
+        .right-content {
+            margin-left: 230px;
+        }
+    }
+    @media (max-width: 900px) {
+        .finance-grid {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                'box1'
+                'box2'
+                'box3'
+                'box4'
+                'box5'
+                'box6'
+                'box7';
+        }
+        
+        .top-nav {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .search-area {
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block;
+        }
+        
+        .sidebar {
+            transform: translateX(-100%);
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        
+        .right-content {
+            margin-left: 0;
+            padding: 1rem;
+        }
+        
+        .nav-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .bottom-nav {
+            display: block;
+        }
+        
+        .top-nav {
+            margin-top: 3rem;
+        }
+    }
